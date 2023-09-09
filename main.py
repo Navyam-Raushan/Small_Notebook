@@ -23,5 +23,13 @@ for index, row in df.iterrows():
     # we need a line and it will be decided by x and y axis so give coordinated of starting and ending points
     pdf.line(11, 27, 270, 27)
 
+    # adding blank pages for each topic as we need nested loop
+    """Adding this feature need to iterate over the no. of pages each time for each topic
+       one page is added earlier so we subtract 1 here.
+    """
+    for j in range(row["Pages"] - 1):
+        pdf.add_page()
+
+
 # to shown output name of file is parameter
 pdf.output("output.pdf")
