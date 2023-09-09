@@ -33,6 +33,10 @@ for index, row in df.iterrows():
     pdf.set_text_color(190, 200, 180)
     pdf.cell(w=0, ln=1, h=9, border=0, txt=row["Topic"], align="R")
 
+    # ADDING MORE LINES IN A SINGLE PAGE
+    for j in range(37, 198, 10):
+        pdf.line(11, j, 270, j)
+
     # adding blank pages for each topic as we need nested loop
     """Adding this feature need to iterate over the no. of pages each time for each topic
        one page is added earlier so we subtract 1 here.
@@ -40,12 +44,15 @@ for index, row in df.iterrows():
     for j in range(row["Pages"] - 1):
         pdf.add_page()
 
+        # ADDING MORE LINES IN A SINGLE PAGE
+        for j in range(27, 198, 10):
+            pdf.line(11, j, 270, j)
+
         # SETTING THE FOOTER
-        pdf.ln(160 + 25)
+        pdf.ln(160 + 27)
         pdf.set_font(family="Times", style="I", size=9)
         pdf.set_text_color(190, 200, 180)
         pdf.cell(w=0, ln=1, h=9, border=0, txt=row["Topic"], align="R")
-
 
 # to shown output name of file is parameter
 pdf.output("output.pdf")
